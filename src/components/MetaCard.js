@@ -35,8 +35,9 @@ function MetaCard({ meta }) {
 
   return (
     <>
+      {/* Tarjeta escritorio */}
       <article
-        className="grid min-h-24 cursor-pointer grid-cols-[70px_110px_1fr_180px_160px] items-center gap-5 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-slate-50 to-slate-200 px-5 py-4 text-slate-950 shadow-2xl transition hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(245,158,11,0.25)] max-lg:grid-cols-[60px_90px_1fr] max-lg:grid-rows-2 max-md:grid-cols-[56px_1fr] max-md:gap-3"
+        className="hidden min-h-24 cursor-pointer grid-cols-[70px_110px_1fr_180px_160px] items-center gap-5 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-slate-50 to-slate-200 px-5 py-4 text-slate-950 shadow-2xl transition hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(245,158,11,0.25)] md:grid"
         onClick={abrirModal}
       >
         {/* Icono */}
@@ -45,7 +46,7 @@ function MetaCard({ meta }) {
         </div>
 
         {/* Frecuencia */}
-        <div className="flex items-baseline gap-1 font-bold max-md:col-span-2 max-md:justify-center">
+        <div className="flex items-baseline gap-1 font-bold">
           <strong className="text-4xl text-red-800">
             {meta.eventos}
           </strong>
@@ -58,13 +59,13 @@ function MetaCard({ meta }) {
             {meta.detalles}
           </p>
 
-          <small className="text-slate-600">
+          <small className="mt-1 block text-sm text-slate-600">
             Fecha límite: {meta.fechaLimite}
           </small>
         </div>
 
         {/* Progreso */}
-        <div className="flex flex-col gap-2 font-bold max-md:col-span-2">
+        <div className="flex flex-col gap-2 font-bold">
           <span>
             {meta.completado} de {meta.meta}
           </span>
@@ -79,7 +80,60 @@ function MetaCard({ meta }) {
 
         {/* Botón */}
         <button
-          className="rounded-full bg-gradient-to-br from-slate-50 to-slate-300 px-6 py-4 font-bold text-slate-950 shadow-lg hover:from-white hover:to-amber-300 max-md:col-span-2"
+          className="rounded-full bg-gradient-to-br from-slate-50 to-slate-300 px-6 py-4 font-bold text-slate-950 shadow-lg hover:from-white hover:to-amber-300"
+          onClick={completarMeta}
+        >
+          Completado
+        </button>
+      </article>
+
+      {/* Tarjeta celular */}
+      <article
+        className="flex cursor-pointer flex-col gap-5 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-slate-50 to-slate-200 px-6 py-6 text-slate-950 shadow-2xl md:hidden"
+        onClick={abrirModal}
+      >
+        {/* Encabezado móvil */}
+        <div className="flex items-center gap-4">
+          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full border-2 border-sky-300 bg-slate-100 text-2xl shadow-[0_0_14px_rgba(56,189,248,0.35)]">
+            {meta.icono}
+          </div>
+
+          <div>
+            <p className="text-base font-bold leading-snug">
+              {meta.detalles}
+            </p>
+
+            <small className="mt-1 block text-sm text-slate-600">
+              Fecha límite: {meta.fechaLimite}
+            </small>
+          </div>
+        </div>
+
+        {/* Frecuencia */}
+        <div className="flex items-baseline gap-1 font-bold">
+          <strong className="text-4xl text-red-800">
+            {meta.eventos}
+          </strong>
+          <span className="text-blue-900">/ {meta.periodo}</span>
+        </div>
+
+        {/* Progreso */}
+        <div className="flex flex-col gap-2 font-bold">
+          <span>
+            {meta.completado} de {meta.meta}
+          </span>
+
+          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-400 shadow-inner">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-sky-400 via-amber-400 to-red-600 shadow-[0_0_10px_rgba(56,189,248,0.65)]"
+              style={{ width: `${porcentaje}%` }}
+            ></div>
+          </div>
+        </div>
+
+        {/* Botón */}
+        <button
+          className="w-full rounded-full bg-gradient-to-br from-slate-50 to-slate-300 px-6 py-4 font-bold text-slate-950 shadow-lg hover:from-white hover:to-amber-300"
           onClick={completarMeta}
         >
           Completado
