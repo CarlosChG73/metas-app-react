@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+# Metas App React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Metas App React es una aplicación de productividad con elementos de gamificación. Permite registrar metas personales, visualizar el progreso, marcar avances como completados, editar metas, borrar metas y conservar la información en el navegador mediante `localStorage`.
 
-## Available Scripts
+Esta versión fue desarrollada con React usando una estructura más completa: rutas, componentes separados, estado global con Context, manejo de acciones con Reducer y estilos con Tailwind CSS.
 
-In the project directory, you can run:
+## Objetivo del proyecto
 
-### `npm start`
+El objetivo de la aplicación es ayudar al usuario a organizar metas personales como si fueran misiones o retos medibles.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+En lugar de guardar metas de forma general, la app permite convertirlas en objetivos concretos con frecuencia, avance, fecha límite y progreso visual.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ejemplos de metas usadas en esta versión:
 
-### `npm test`
+* Completar rutinas de ejercicio en casa.
+* Estudiar desarrollo web con prácticas guiadas.
+* Crear proyectos para mi portafolio web.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Funcionalidades principales
 
-### `npm run build`
+* Ver una lista de metas.
+* Crear nuevas metas desde un formulario.
+* Marcar metas como completadas.
+* Editar metas desde un modal.
+* Borrar metas.
+* Visualizar avance con contador y barra de progreso.
+* Guardar datos en `localStorage`.
+* Mantener la información después de recargar la página.
+* Navegar entre secciones usando React Router.
+* Usar diseño responsive adaptable a escritorio, tablet y celular.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tecnologías utilizadas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* React
+* JavaScript
+* React Router
+* Context API
+* useReducer
+* useState
+* useEffect
+* Tailwind CSS
+* localStorage
+* Create React App
+* Git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Estructura general del proyecto
 
-### `npm run eject`
+```txt
+src/
+├─ components/
+│  ├─ Footer.js
+│  ├─ Header.js
+│  ├─ Layout.js
+│  ├─ MetaCard.js
+│  ├─ MetaModal.js
+│  └─ Sidebar.js
+├─ context/
+│  └─ MetasContext.js
+├─ data/
+│  └─ metasIniciales.js
+├─ pages/
+│  ├─ ListaMetas.js
+│  └─ NuevaMeta.js
+├─ reducers/
+│  └─ metasReducer.js
+├─ App.js
+├─ index.css
+└─ index.js
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Arquitectura usada
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La aplicación se organizó en componentes para separar responsabilidades.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`Header`, `Sidebar`, `Footer` y `Layout` construyen la estructura visual principal.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`ListaMetas` muestra las metas guardadas.
 
-## Learn More
+`NuevaMeta` contiene el formulario para crear nuevas metas.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`MetaCard` representa cada tarjeta de meta.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`MetaModal` permite editar o borrar una meta.
 
-### Code Splitting
+`MetasContext` comparte el estado global de metas en toda la aplicación.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`metasReducer` centraliza las acciones principales: crear, completar, actualizar y borrar metas.
 
-### Analyzing the Bundle Size
+## Acciones principales del reducer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```txt
+COMPLETAR
+CREAR
+ACTUALIZAR
+BORRAR
+```
 
-### Making a Progressive Web App
+Estas acciones permiten que el estado de las metas se modifique de forma más ordenada y controlada.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Instalación
 
-### Advanced Configuration
+Para instalar las dependencias del proyecto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm install
+```
 
-### Deployment
+## Ejecutar el proyecto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Para iniciar la aplicación en modo desarrollo:
 
-### `npm run build` fails to minify
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La aplicación se abrirá en:
+
+```txt
+http://localhost:3000
+```
+
+## Crear build de producción
+
+Para generar una versión optimizada:
+
+```bash
+npm run build
+```
+
+## Rutas principales
+
+```txt
+/lista
+/nueva
+```
+
+`/lista` muestra las metas registradas.
+
+`/nueva` muestra el formulario para crear una nueva meta.
+
+## Personalización del proyecto
+
+La aplicación fue personalizada para que las metas no fueran solo ejemplos genéricos. Se adaptó a objetivos reales relacionados con entrenamiento personal, estudio de desarrollo web y creación de proyectos para portafolio.
+
+También se personalizó el diseño con una paleta visual inspirada en colores tecnológicos: fondo oscuro, rojo, dorado y azul. Esto refuerza la idea de gamificación, progreso y energía.
+
+## Footer de la aplicación
+
+```txt
+© 2026 Carlos Chávez Dev. Todos los derechos reservados.
+Estudiante en Academia X
+```
+
+## Estado del proyecto
+
+Proyecto funcional.
+
+Incluye:
+
+* Rutas.
+* Componentes separados.
+* Estado global con Context.
+* Reducer.
+* Formulario controlado.
+* Modal de edición.
+* LocalStorage.
+* Tailwind CSS.
+* Diseño responsive.
+
+## Autor
+
+Carlos Chávez Dev.
