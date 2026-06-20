@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
+import { HashRouter } from 'react-router';
 import { MetasProvider } from './context/MetasContext';
 import './index.css';
 import App from './App';
@@ -8,13 +8,16 @@ import App from './App';
 // Punto de entrada de React
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// Render principal
+// Render principal de la aplicación
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* Router para GitHub Pages */}
+    <HashRouter>
+      {/* Estado global de metas */}
       <MetasProvider>
+        {/* Componente principal */}
         <App />
       </MetasProvider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
